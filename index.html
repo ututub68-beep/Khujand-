@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Худжанд — Жемчужина Таджикистана</title>
+    <style>
+        :root {
+            --primary: #1e4d6b;
+            --accent: #d9822b;
+            --bg-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        /* Навигация */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Главный экран (Hero) */
+        .hero {
+            background: linear-gradient(rgba(30, 77, 107, 0.75), rgba(30, 77, 107, 0.85)),
+                        url('https://unsplash.com') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #c06e1e;
+            transform: translateY(-2px);
+        }
+
+        /* Секции */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* О городе */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .stat-box {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        /* Карточки достопримечательностей */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .card-header {
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary), #2c6e96);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.4);
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .card-body p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .card-location {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Советы туристам */
+        .tips {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .tips-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .tip-item h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <nav>
+            <a href="#" class="logo">Худжанд<span>.tj</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">О городе</a></li>
+                <li><a href="#sights">Достопримечательности</a></li>
+                <li><a href="#tips">Туристам</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Главный баннер -->
+    <div class="hero">
+        <h1>Добро пожаловать в Худжанд</h1>
+        <p>Один из древнейших городов Центральной Азии, раскинувшийся на берегах великой реки Сырдарьи у входа в плодородную Ферганскую долину.</p>
+        <a href="#sights" class="btn">Исследовать места</a>
+    </div>
+
+    <!-- О городе -->
+    <section id="about">
+        <h2>Древний и современный</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p><strong>Худжанд</strong> (в античности — <em>Александрия Эсхата</em>, основанная Александром Македонским) насчитывает более 2500 лет истории. В средние века город был важнейшим узлом Великого шёлкового пути.</p>
+                <p>Сегодня это второй по величине город Таджикистана, административный центр Согдийской области, сочетающий восточный колорит старинных базаров, тенистые парки и современную архитектуру.</p>
+                <div class="stats">
+                    <div class="stat-box">
+                        <strong>2500+</strong>
+                        <span>лет истории</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>Сырдарья</strong>
+                        <span>главная река</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>Согд</strong>
+                        <span>сердце региона</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div style="background: var(--primary); color: white; padding: 35px; border-radius: 12px; box-shadow: 0 8px 20px rgba(30,77,107,0.2);">
+                    <h3 style="margin-bottom: 12px; color: var(--accent);">Знаете ли вы?</h3>
+                    <p style="font-size: 0.95rem; opacity: 0.95;">В 329 году до н.э. Александр Македонский основал здесь крепость Александрия Крайняя (Эсхата), которая служила северным форпостом его империи.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Достопримечательности -->
+    <section id="sights">
+        <h2>Главные достопримечательности</h2>
+        <div class="cards-grid">
+
+            <!-- Карточка 1 -->
+            <div class="card">
+                <div class="card-header">
+                    🏰
+                    <span class="card-tag">История</span>
+                </div>
+                <div class="card-body">
+                    <h3>Худжандская крепость</h3>
